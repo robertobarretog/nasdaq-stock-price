@@ -8,16 +8,18 @@
 
 'use strict';
 
-var expect = require('chai').expect;
-var MongoClient = require('mongodb');
+const expect = require('chai').expect;
+const express = require('express');
+const router = express.Router();
+const StocksController = require('../controller/stockController');
 
-const CONNECTION_STRING = process.env.DB; //MongoClient.connect(CONNECTION_STRING, function(err, db) {});
+const API = '/api/stock-prices';
+const stockscontroller = new StocksController();
 
-module.exports = function (app) {
+//Index page (static HTML)
+router.get('/', (req, res) => res.sendFile(process.cwd() + '/views/index.html'));
 
-  app.route('/api/stock-prices')
-    .get(function (req, res){
-      
-    });
-    
-};
+// API entrypoint
+router.get(API, (req, res) => stockscontroller.getStockPrice(req.query.stock, req.ip, req.query.like, res));
+
+module.exports = router;

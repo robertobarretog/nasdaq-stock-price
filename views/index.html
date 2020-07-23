@@ -1,79 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="A project for freeCodeCamp certification"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="Roberto Barreto" />
+    <meta
+      name="keywords"
+      content="freecodecamp, nodejs, express, javascript, mongodb, mongoose"
+    />
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/public/css/fonts.css" />
+    <title>Nasdaq Stock Price Checker</title>
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="A project for freeCodeCamp certification">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="author" content="Roberto Barreto">
-  <meta name="keywords" content="freecodecamp, nodejs, express, javascript, mongodb, mongoose">
-  <link rel="stylesheet" href="/public/css/style.css">
-  <link rel="stylesheet" href="/public/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/public/css/fonts.css">
-  <title>Nasdaq Stock Price Checker</title>
-</head>
-
-<body class="text-center">
-  <div id="main" class="container-fluid">
-    <div class="row pb-3">
-      <div class="col-12 col-md-3 col-lg-4"></div>
-      <div class="col-12 col-md-6 col-lg-4">
-        <h1 class="pb-3">Nasdaq Stock Price Checker</h1>
-        <p class="pb-3">
-          <button class="btn btn-primary focus" type="button" id="oneStockToggle" data-toggle="collapse"
-            data-target="#checkOneStock" aria-expanded="true" aria-controls="checkOneStock">Check
-            one stock</button>
-          <button class="btn btn-primary" type="button" id="twoStockToggle" data-toggle="collapse"
-            data-target="#compareTwoStocks" aria-expanded="false" aria-controls="compareTwoStocks">Compare two
-            stocks</button>
-        </p>
-        <div class="card collapse multi-collapse show formCard" id="checkOneStock">
-          <div class="card-body">
-            <h5 class="card-title">Enter a Nasdaq ticker (e.g. GOOG, AMZN)</h5>
-            <form id="oneStockForm" autocomplete="off" class="p-1">
-              <div class="input-group">
-                <input class="form-control" type="text" name="stock" placeholder="GOOG" required autofocus>
-              </div>
-              <div class="custom control custom-checkbox p-1">
-                <input class="custom-control-input" type="checkbox" value="true" name="like" id="likeCheck">
-                <label class="custom-control-label" for="likeCheck">Check if you like this company</label>
-              </div>
-              <button class="btn btn-primary" type="submit">Get Price!</button>
-            </form>
+  <body class="text-center">
+    <div id="main" class="container-fluid">
+      <div class="row pb-3">
+        <div class="col-12 col-md-3 col-lg-4"></div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <h1 class="pb-3">Nasdaq Stock Price Checker</h1>
+          <p class="pb-3">
+            <button
+              class="btn btn-primary focus"
+              type="button"
+              id="oneStockToggle"
+              data-toggle="collapse"
+              data-target="#checkOneStock"
+              aria-expanded="true"
+              aria-controls="checkOneStock"
+            >
+              Check one stock
+            </button>
+            <button
+              class="btn btn-primary"
+              type="button"
+              id="twoStockToggle"
+              data-toggle="collapse"
+              data-target="#compareTwoStocks"
+              aria-expanded="false"
+              aria-controls="compareTwoStocks"
+            >
+              Compare two stocks
+            </button>
+          </p>
+          <div
+            class="card collapse multi-collapse show formCard"
+            id="checkOneStock"
+          >
+            <div class="card-body">
+              <h5 class="card-title">
+                Enter a Nasdaq ticker (e.g. GOOG, AMZN)
+              </h5>
+              <form id="oneStockForm" autocomplete="off" class="p-1">
+                <div class="input-group">
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="stock"
+                    placeholder="GOOG"
+                    required
+                    autofocus
+                  />
+                </div>
+                <div class="custom control custom-checkbox p-1">
+                  <input
+                    class="custom-control-input"
+                    type="checkbox"
+                    value="true"
+                    name="like"
+                    id="likeCheck"
+                  />
+                  <label class="custom-control-label" for="likeCheck"
+                    >Check if you like this company</label
+                  >
+                </div>
+                <button class="btn btn-primary" type="submit">
+                  Get Price!
+                </button>
+              </form>
+            </div>
+          </div>
+          <div
+            class="card collapse multi-collapse formCard"
+            id="compareTwoStocks"
+          >
+            <div class="card-body">
+              <h5 class="card-title">
+                Compare 2 stocks and get relative likes
+              </h5>
+              <form id="twoStockForm" autocomplete="off" class="p-1">
+                <div class="input-group p-1">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="stock"
+                    placeholder="AMD"
+                    required
+                  />
+                </div>
+                <div class="input-group p-1">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="stock"
+                    placeholder="INTC"
+                    required
+                  />
+                </div>
+                <div class="custom control custom-checkbox p-1">
+                  <input
+                    class="custom-control-input"
+                    type="checkbox"
+                    value="true"
+                    name="like"
+                    id="twoLikeCheck"
+                  />
+                  <label class="custom-control-label" for="twoLikeCheck"
+                    >Check if you like both companies</label
+                  >
+                </div>
+                <button class="btn btn-primary" type="submit">Compare!</button>
+              </form>
+            </div>
           </div>
         </div>
-        <div class="card collapse multi-collapse formCard" id="compareTwoStocks">
-          <div class="card-body">
-            <h5 class="card-title">Compare 2 stocks and get relative likes</h5>
-            <form id="twoStockForm" autocomplete="off" class="p-1">
-              <div class="input-group p-1">
-                <input type="text" class="form-control" name="stock" placeholder="AMD" required>
-              </div>
-              <div class="input-group p-1">
-                <input type="text" class="form-control" name="stock" placeholder="INTC" required>
-              </div>
-              <div class="custom control custom-checkbox p-1">
-                <input class="custom-control-input" type="checkbox" value="true" name="like" id="twoLikeCheck">
-                <label class="custom-control-label" for="twoLikeCheck">Check if you like both companies</label>
-              </div>
-              <button class="btn btn-primary" type="submit">Compare!</button>
-            </form>
-          </div>
-        </div>
+        <div class="col-12 col-md-3 col-lg-4"></div>
       </div>
-      <div class="col-12 col-md-3 col-lg-4"></div>
+      <div id="stock-result" class="row mt-2 p-4"></div>
     </div>
-    <div id="stock-result" class="row mt-2 p-4">
-    </div>
-  </div>
-  <footer>
-    <p class="p-2">by <a href="https://github.com/rober95" target="_blank">Roberto Barreto</a></p>
-  </footer>
-  <!-- Your web-app is https, so your scripts need to be too -->
-  <script src="/public/js/jquery-3.4.1.min.js"></script>
-  <script src="/public/js/bootstrap.bundle.min.js"></script>
-  <script src="/public/js/index.js"></script>
-</body>
-
+    <footer>
+      <p class="p-2">
+        by
+        <a href="https://github.com/robertobarretog" target="_blank"
+          >Roberto Barreto</a
+        >
+      </p>
+    </footer>
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <script src="/public/js/jquery-3.4.1.min.js"></script>
+    <script src="/public/js/bootstrap.bundle.min.js"></script>
+    <script src="/public/js/index.js"></script>
+  </body>
 </html>

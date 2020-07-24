@@ -20,37 +20,24 @@
   </head>
 
   <body class="text-center">
-    <div id="main" class="container-fluid">
+    <main class="container">
       <div class="row pb-3">
-        <div class="col-12 col-md-3 col-lg-4"></div>
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 mx-auto">
           <h1 class="pb-3">Nasdaq Stock Price Checker</h1>
-          <p class="pb-3">
+          <div class="pb-3">
             <button
               class="btn btn-primary focus"
               type="button"
               id="oneStockToggle"
               data-toggle="collapse"
-              data-target="#checkOneStock"
               aria-expanded="true"
               aria-controls="checkOneStock"
             >
-              Check one stock
-            </button>
-            <button
-              class="btn btn-primary"
-              type="button"
-              id="twoStockToggle"
-              data-toggle="collapse"
-              data-target="#compareTwoStocks"
-              aria-expanded="false"
-              aria-controls="compareTwoStocks"
-            >
               Compare two stocks
             </button>
-          </p>
+          </div>
           <div
-            class="card collapse multi-collapse show formCard"
+            class="card collapse multi-collapse show formCard mx-auto mt-3"
             id="checkOneStock"
           >
             <div class="card-body">
@@ -87,7 +74,7 @@
             </div>
           </div>
           <div
-            class="card collapse multi-collapse formCard"
+            class="card collapse multi-collapse formCard mx-auto mt-3"
             id="compareTwoStocks"
           >
             <div class="card-body">
@@ -130,21 +117,17 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-3 col-lg-4"></div>
       </div>
       <div id="stock-result" class="row mt-2 p-4"></div>
-    </div>
+    </main>
     <footer>
-      <p class="p-2">
+      <p class="py-2">
         by
         <a href="https://github.com/robertobarretog" target="_blank"
           >Roberto Barreto</a
         >
       </p>
     </footer>
-    <!-- Your web-app is https, so your scripts need to be too -->
-    <script src="/public/js/jquery-3.4.1.min.js"></script>
-    <script src="/public/js/bootstrap.bundle.min.js"></script>
-    <script src="/public/js/index.js"></script>
+    <script src="/public/js/vanilla.js"></script>
   </body>
 </html>
